@@ -1,15 +1,17 @@
 package Console;
 
 
-import Local.LocalImp;
+
+
+import bridge.GdriveImplementation;
 
 import java.util.Scanner;
 
 public class ConsoleApp {
     public static void main(String[] args) {
+        GdriveImplementation implementacija = new GdriveImplementation();
         Scanner input = new Scanner(System.in);
         while(true){
-            LocalImp implementacija = new LocalImp();
             String answer = input.nextLine();
             switch (answer){
                 case "connect":
@@ -34,14 +36,14 @@ public class ConsoleApp {
                     String name1 = input.nextLine();
                     System.out.print("Enter the file path to the location based off storage root : ");
                     String path1 = input.nextLine();
-                    implementacija.createFile( name1, path1);
+                    implementacija.createFolder( name1, path1);
                     continue;
                 case "uploadFile":
                     System.out.print("Enter the absolute path to the source : ");
                     String name2 = input.nextLine();
                     System.out.print("Enter the file path to the destination based off storage root : ");
                     String path2 = input.nextLine();
-                    implementacija.createFile( name2, path2);
+                    implementacija.uploadFile( name2, path2);
                     continue;
                 case "uploadFiles":
                     continue;
@@ -79,7 +81,7 @@ public class ConsoleApp {
                     String path10 = input.nextLine();
                     System.out.print("Enter the absolute file path to the destination : ");
                     String path11 = input.nextLine();
-                    implementacija.downloadFolder(path10, path11);
+                    implementacija.downloadFile(path10, path11);
                     continue;
                 case "banExtension":
                     System.out.print("Enter the extension to ban : ");
@@ -101,8 +103,8 @@ public class ConsoleApp {
                     System.out.println("createUser");
                     System.out.println("createFile");
                     System.out.println("createFolder");
-                    System.out.println("uplaodFile");
-                    System.out.println("uploadFIles");
+                    System.out.println("uploadFile");
+                    System.out.println("uploadFiles");
                     System.out.println("deleteFile");
                     System.out.println("deleteFolder");
                     System.out.println("moveFile");
